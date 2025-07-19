@@ -1,0 +1,52 @@
+.container {
+}
+
+.homeContainer {
+  display: flex;
+}
+
+.homeContainer > div:nth-child(odd) {
+  flex: 0.2;
+}
+
+.homeContainer > div:nth-child(even) {
+  flex: 0.6;
+}
+
+.homeContainer_leftBar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  align-items: start;
+  border-right: 1px solid rgb(230, 230, 230);
+}
+
+.sideBarOption {
+  display: flex;
+  align-items: center;
+  font-size: 1.4rem;
+  gap: 1.3rem;
+
+  width: 80%;
+  max-width: 80%;
+  margin: 0 auto;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.sideBarOption:hover {
+  transform: scale(1.04);
+}
+
+.sideBarOption > svg {
+  height: 1.4em;
+  min-width: fit-content;
+}
+
+.homeContainer_extraContainer {
+  border-left: 1px solid rgb(220, 220, 220);
+}
+
+.homeContainer_feedContainer {
+  padding-inline: 0.8rem;
+}

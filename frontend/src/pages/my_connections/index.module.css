@@ -1,0 +1,24 @@
+.userCard {
+  display: flex;
+  width: 100%;
+  gap: 1.2rem;
+  padding: 1.3rem;
+  align-items: center;
+  box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.1);
+}
+
+.profilePicture {
+  width: 6.5rem;
+  border-radius: 50%;
+}
+
+.acceptBtn {
+  padding-inline: 0.8rem;
+  padding-block: 0.3rem;
+  background: rgba(3, 93, 183, 0.905);
+  outline: none;
+  border: none;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+}
