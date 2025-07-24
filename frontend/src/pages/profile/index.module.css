@@ -72,7 +72,7 @@
   object-fit: cover;
 }
 
-.connectedButton {
+.updateProfile {
   padding-inline: 0.8rem;
   padding-block: 0.3rem;
   background: rgba(3, 93, 183, 0.905);
@@ -81,6 +81,7 @@
   color: white;
   border-radius: 10px;
   cursor: pointer;
+  width: fit-content;
 }
 
 .connectBtn {
@@ -120,4 +121,22 @@
 .nameEdit {
   font-size: 1.5rem;
   font-weight: bold;
+}
+
+.profileContainer_details textarea {
+  outline: none;
+  border: none;
+  padding-inline: 10px;
+  padding-block: 9px;
+  font-family: "poppins";
+  font-size: 1.1rem;
+}
+
+.addWorkButton {
+  padding-inline: 1.3rem;
+  background: white;
+  border: 1px dotted silver;
+  padding-block: 1.2rem;
+  border-radius: 10px;
+  cursor: pointer;
 }

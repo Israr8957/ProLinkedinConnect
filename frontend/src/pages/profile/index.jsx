@@ -15,6 +15,7 @@ export default function ProfilePage() {
 
   const [userProfile, setUserProfile] = useState({});
   const [userPosts, setUserPosts] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   useEffect(async () => {
     await dispatch(getAboutUser({ token: localStorage.getItem("token") }));
     await dispatch(getAllPosts());
@@ -45,6 +46,22 @@ export default function ProfilePage() {
         },
       }
     );
+    dispatch(getAboutUser({ token: localStorage.getItem("token") }));
+  };
+
+  const updateprofileData = async () => {
+    const request = await clientServer.post("/user_update", {
+      token: localStorage.getItem("token"),
+      name: userProfile.userId.user,
+    });
+
+    const response = await clientServer.post("/update_profile_data", {
+      token: localStorage.getItem("token"),
+      bio: profile.bio,
+      currentPost: userProfile.correntPost,
+      postWork: userProfile.postWork,
+      education: userProfile.education,
+    });
     dispatch(getAboutUser({ token: localStorage.getItem("token") }));
   };
 
@@ -104,6 +121,15 @@ export default function ProfilePage() {
                       @{userProfile.userId.username}
                     </p>
                   </div>
+
+                  <textarea
+                    value={userProfile.bio}
+                    onChange={(e) => {
+                      setUserProfile({ ...userProfile, bio: e.target.value });
+                    }}
+                    rows={Math.max(3, Math.ceil(userProfile.bio.length / 80))}
+                    style={{ width: "100%" }}
+                  ></textarea>
                 </div>
 
                 <div style={{ flex: "0.2rem" }}>
@@ -142,8 +168,25 @@ export default function ProfilePage() {
                                   </div>
                                 );
                               })}
+
+                              <button
+                                className={styles.addWorkButton}
+                                onClick={{}}
+                              >
+                                Add Work
+                              </button>
                             </div>
                           </div>
+                          {userProfile != authState.user && (
+                            <div
+                              onClick={() => {
+                                updateprofileData();
+                              }}
+                              className={styles.updateProfile}
+                            >
+                              Update profile
+                            </div>
+                          )}
                           {/* <p>{post.body}</p> */}
                         </div>
                       </div>
