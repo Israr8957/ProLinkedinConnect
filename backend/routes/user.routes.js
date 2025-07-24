@@ -19,18 +19,18 @@ const router = Router();
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "upload/");
+    cb(null, "uploads/");
   },
   filename: (req, file, cb) => {
     cb(null, file.originalname);
   },
 });
 
-const upload = multer({ storage: storage });
+const uploads = multer({ storage: storage });
 
 router
-  .route("/upload_profile_picture")
-  .post(upload.single("profile_picture"), uploadProfilePicture);
+  .route("/update_profile_picture")
+  .post(uploads.single("profile_picture"), uploadProfilePicture);
 // ex thunderclient {
 // profile_picture:/path
 //}

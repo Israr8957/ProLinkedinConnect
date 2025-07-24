@@ -1,0 +1,123 @@
+.container {
+  padding: 1.3rem;
+  background: rgb(255, 253, 253);
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.bsckDropContainer {
+  width: 100%;
+  height: 30vh;
+  background: url("https://media.istockphoto.com/id/903885340/photo/ameenpur-lake.jpg?s=1024x1024&w=is&k=20&c=EJy4xI9mEj1xpxfJlTikQQtBfztT9Pdqqynscqzzr_8=");
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  border-radius: 20px;
+}
+
+.backDrop {
+  width: 10em;
+  height: 10em;
+  object-fit: cover;
+  border-radius: 50%;
+  position: absolute;
+  bottom: -30%;
+  left: 8%;
+  text-align: center;
+}
+
+.backdrop__overlay {
+  width: 10em;
+  height: 10em;
+  object-fit: cover;
+  border-radius: 50%;
+  position: absolute;
+  bottom: -30%;
+  left: 8%;
+  text-align: center;
+  z-index: 4;
+  transition: all 0.5s;
+  cursor: pointer;
+  color: white;
+  opacity: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.backdrop__overlay:hover {
+  opacity: 0.6;
+  background: black;
+}
+
+.profileContainer_details {
+  padding-top: 6.6rem;
+}
+
+.card {
+  display: fles;
+  align-items: center;
+  gap: 1.4rem;
+}
+
+.card_profileContainer {
+  display: flex;
+}
+
+.card_profileContainer > img {
+  width: 3.4rem;
+  height: auto;
+  height: 3.4rem;
+  object-fit: cover;
+}
+
+.connectedButton {
+  padding-inline: 0.8rem;
+  padding-block: 0.3rem;
+  background: rgba(3, 93, 183, 0.905);
+  outline: none;
+  border: none;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.connectBtn {
+  padding-inline: 0.8rem;
+  padding-block: 0.3rem;
+  background: rgba(3, 93, 183, 0.905);
+  outline: none;
+  border: none;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.workHistoryContainer {
+  display: flex;
+  gap: 1.4rem;
+  padding-top: 1.4rem;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.workHistoryCard {
+  min-width: fit-content;
+  padding-block: 1rem;
+  border-radius: 10px;
+  box-shadow: 10px 10px 15px rgb(173, 173, 173);
+}
+
+.profileContainer_details input {
+  outline: none;
+  border-style: none;
+  padding-inline: 10px;
+  padding-block: 9px;
+  width: fit-content;
+}
+
+.nameEdit {
+  font-size: 1.5rem;
+  font-weight: bold;
+}

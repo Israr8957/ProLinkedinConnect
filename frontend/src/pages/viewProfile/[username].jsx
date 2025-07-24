@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllPosts } from "@/config/redux/action/postAction";
 import {
   getConnectionRequest,
+  getMyConnectionRequests,
   sendConnectionRequest,
 } from "@/config/redux/action/authAction";
 
@@ -32,6 +33,7 @@ export default function ViewProfilePage({ userProfile }) {
     await dispatch(
       getConnectionRequest({ token: localStorage.getItem("token") })
     );
+    await dispatch(getMyConnectionRequests());
   };
 
   useEffect(() => {
@@ -57,7 +59,22 @@ export default function ViewProfilePage({ userProfile }) {
         setIsConnectionNull(false);
       }
     }
-  }, [authState?.connections]);
+
+    if (
+      authState?.connectionRequest.some(
+        (user) => user.userId._id === userProfile.userId._id
+      )
+    ) {
+      setIsCurrentUserInConnection(true);
+      if (
+        authState.connectionRequest.some(
+          (user) => user.userId._id === userProfile.userId._id
+        )
+      ) {
+        setIsConnectionNull(false);
+      }
+    }
+  }, [authState?.connections, authState?.connectionRequest]);
 
   useEffect(() => {
     getUsersPost();

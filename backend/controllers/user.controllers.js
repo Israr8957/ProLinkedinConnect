@@ -107,7 +107,7 @@ const uploadProfilePicture = async (req, res) => {
   const { token } = req.body;
 
   try {
-    const user = User.findOne({ token: token });
+    const user = await User.findOne({ token: token });
 
     if (!user) {
       return res.status(404).json({ message: "user not found" });
