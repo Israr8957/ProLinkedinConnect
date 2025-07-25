@@ -16,6 +16,18 @@ export default function ProfilePage() {
   const [userProfile, setUserProfile] = useState({});
   const [userPosts, setUserPosts] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const [inputData, setInPinputData] = useState({
+    company: "",
+    position: "",
+    years: "",
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setInPinputData({ ...inputData, [name]: value });
+  };
+
   useEffect(async () => {
     await dispatch(getAboutUser({ token: localStorage.getItem("token") }));
     await dispatch(getAllPosts());
@@ -28,7 +40,7 @@ export default function ProfilePage() {
       let post = postReducer.posts.filter((post) => {
         return post.userId?.username === authState.user.userId.username;
       });
-      // setUserPosts(post);//there is some issue
+      setUserPosts(post); //there is some issue
     }
   }, [authState.user, postReducer.posts]);
 
@@ -57,7 +69,7 @@ export default function ProfilePage() {
 
     const response = await clientServer.post("/update_profile_data", {
       token: localStorage.getItem("token"),
-      bio: profile.bio,
+      bio: userProfile.bio,
       currentPost: userProfile.correntPost,
       postWork: userProfile.postWork,
       education: userProfile.education,
@@ -102,7 +114,6 @@ export default function ProfilePage() {
                       alignItems: "center",
                     }}
                   >
-                    {/* <h2>{userProfile.userId.name}</h2> */}
                     <input
                       type="text"
                       className={styles.nameEdit}
@@ -134,7 +145,6 @@ export default function ProfilePage() {
 
                 <div style={{ flex: "0.2rem" }}>
                   <h3>Recent Activity</h3>
-                  <p>{userPosts}</p>
                   {userPosts.map((post) => {
                     return (
                       <div key={post._id} className={styles.postCard}>
@@ -155,7 +165,7 @@ export default function ProfilePage() {
                           <div className="workHistory">
                             <h4>Work History</h4>
                             <div className={styles.workHistoryContainer}>
-                              {userProfile.pastWork.map((work, index) => {
+                              {userProfile.postWork.map((work, index) => {
                                 return (
                                   <div
                                     key={index}
@@ -171,7 +181,9 @@ export default function ProfilePage() {
 
                               <button
                                 className={styles.addWorkButton}
-                                onClick={{}}
+                                onClick={() => {
+                                  setIsModalOpen(true);
+                                }}
                               >
                                 Add Work
                               </button>
@@ -193,6 +205,57 @@ export default function ProfilePage() {
                     );
                   })}
                 </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {isModalOpen && (
+          <div
+            onClick={() => {
+              setIsModalOpen(false);
+            }}
+            className={styles.commentsContainer}
+          >
+            <div
+              onClick={(e) => {
+                e.stopPropagation();
+              }}
+              className={styles.allCommentsContainer}
+            >
+              <input
+                onChange={handleInputChange}
+                name="company"
+                type="text"
+                className={styles.inputField}
+                placeholder="Enter Company"
+              />
+              <input
+                onChange={handleInputChange}
+                name="position"
+                type="text"
+                className={styles.inputField}
+                placeholder="Enter Position"
+              />
+              <input
+                onChange={handleInputChange}
+                name="company"
+                type="years"
+                className={styles.inputField}
+                placeholder="Years"
+              />
+
+              <div
+                onClick={() => {
+                  setUserProfile({
+                    ...userProfile,
+                    postWork: [userProfile, inputData],
+                  });
+                  setIsModalOpen(false);
+                }}
+                className={styles.updateProfile}
+              >
+                Add Work
               </div>
             </div>
           </div>

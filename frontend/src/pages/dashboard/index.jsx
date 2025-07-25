@@ -104,7 +104,11 @@ export default function Dashboard() {
             <div className={styles.createPostContainer}>
               <img
                 className={styles.userProfile}
-                src={`${BASE_URL}/${authState.profilePicture}`}
+                src={
+                  authState.profilePicture
+                    ? `${BASE_URL}/${authState.profilePicture}`
+                    : "/image.png" // use a default placeholder image
+                }
                 alt="UserProfilePicture"
               />
 
