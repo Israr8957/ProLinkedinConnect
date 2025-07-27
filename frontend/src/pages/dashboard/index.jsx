@@ -177,7 +177,7 @@ export default function Dashboard() {
                           <p style={{ fontWeight: "bold" }}>
                             {post.userId?.name}
                           </p>
-                          {post.userId?._id === authState.user.userId._id && (
+                          {post.userId?._id === authState.user?.userId?._id && (
                             <div
                               onClick={async () => {
                                 await dispatch(
@@ -205,9 +205,9 @@ export default function Dashboard() {
                             </div>
                           )}
                         </div>
-                        <p style={{ fontWeight: "bold", color: "gray" }}>
+                        {/* <p style={{ fontWeight: "bold", color: "gray" }}>
                           {post.userId?.username}
-                        </p>
+                        </p> */}
                         <p style={{ paddingTop: "1.3rem" }}>{post?.body}</p>
 
                         <div className={styles.singleCard_image}>

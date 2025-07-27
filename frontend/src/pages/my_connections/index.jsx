@@ -55,13 +55,15 @@ export default function MyConnectionsPage() {
                       }}
                     >
                       <div className={styles.profilePicture}>
-                        <img
+                        {/* <img
                           src={`${BASE_URL}/${user.userId.profilePicture}`}
                           alt="userPic"
-                        />
+                        /> */}
                       </div>
                       <div className={styles.userInfo}>
-                        <h3>{user.userId.name}</h3>
+                        <h3 style={{ cursor: "pointer" }}>
+                          {user.userId.name}
+                        </h3>
                         <p>{user.userId.username}</p>
                       </div>
 
@@ -105,10 +107,10 @@ export default function MyConnectionsPage() {
                     }}
                   >
                     <div className={styles.profilePicture}>
-                      <img
+                      {/* <img
                         src={`${BASE_URL}/${user.userId.profilePicture}`}
                         alt="userPic"
-                      />
+                      /> */}
                     </div>
                     <div className={styles.userInfo}>
                       <h3>{user.userId.name}</h3>

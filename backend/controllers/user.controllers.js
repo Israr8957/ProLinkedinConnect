@@ -247,6 +247,7 @@ const sendConnectionRequest = async (req, res) => {
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
+    // console.log("DEBUG: req.body =", req.body);
 
     const connectionUser = await User.findOne({ _id: connectionId });
     if (!connectionUser) {

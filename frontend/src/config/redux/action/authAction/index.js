@@ -82,7 +82,7 @@ export const sendConnectionRequest = createAsyncThunk(
         "/user/send_connection_request",
         {
           token: user.token,
-          userId: user.user_Id,
+          connectionId: user.userId,
         }
       );
 
