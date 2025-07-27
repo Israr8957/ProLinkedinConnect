@@ -49,4 +49,45 @@
 
 .homeContainer_feedContainer {
   padding-inline: 0.8rem;
+  padding-bottom: 6vh;
+}
+
+/* mobile navbar */
+.mobileNavbar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 6vh;
+  position: fixed;
+  display: none;
+  justify-content: space-around;
+  background: white;
+  align-items: center;
+}
+
+.mobileNavbar svg {
+  height: 2rem;
+  width: 2rem;
+}
+
+.singleNavbarHolder_mobileView {
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+  .homeContainer_extraContainer {
+    display: none;
+  }
+
+  .homeContainer {
+    display: block;
+  }
+  .homeContainer_leftBar {
+    display: none;
+  }
+
+  .mobileNavbar {
+    display: flex;
+  }
 }

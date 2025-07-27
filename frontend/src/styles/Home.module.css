@@ -1,9 +1,9 @@
-.container{
+.container {
   font-family: poppins;
   padding: 1.2rem;
 }
 
-.mainContainer{
+.mainContainer {
   display: flex;
   align-items: center;
   gap: 4rem;
@@ -11,17 +11,17 @@
   height: 80vh;
 }
 
-.mainContainer_left{
+.mainContainer_left {
   flex: 0.5;
 }
 
-.mainContainer_right{
+.mainContainer_right {
   flex: 0.5;
 }
 
 .mainContainer_left > p:nth-child(1) {
   font-size: 2.9rem;
-  background: -webkit-linear-gradient(45deg,#000000,#9d9d9d9d);
+  background: -webkit-linear-gradient(45deg, #000000, #9d9d9d9d);
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -35,7 +35,27 @@
   font-size: 1.4rem;
   background: rgb(197, 44, 208);
   color: white;
-  padding-inline:1.2rem ;
+  padding-inline: 1.2rem;
   padding-block: 0.6rem;
   border-radius: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+  .mainContainer {
+    flex-direction: column;
+    gap: 2rem;
+    padding-top: 1.3rem;
+  }
+
+  .mainContainer_left {
+    flex: 1;
+    padding-top: 1.5rem;
+  }
+  .mainContainer_right {
+    flex: 1;
+  }
+
+  .mainContainer_right img {
+    width: 100%;
+  }
 }

@@ -30,7 +30,7 @@ export default function NavbarComponent() {
           {authState.profileFetched && (
             <div>
               <div style={{ display: "flex", gap: "1.2rem" }}>
-                <p>Hey, {authState.user?.userId?.name || "Guest"}</p>
+                {/* <p>Hey, {authState.user?.userId?.name || "Guest"}</p> */}
                 <p
                   onClick={() => {
                     router.push("/profile");

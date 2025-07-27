@@ -211,7 +211,11 @@ export default function Dashboard() {
                         <p style={{ paddingTop: "1.3rem" }}>{post?.body}</p>
 
                         <div className={styles.singleCard_image}>
-                          <img src={`${BASE_URL}/${post.media}`} />
+                          {post.media !== "" ? (
+                            <img src={`${BASE_URL}/${post.media}`} />
+                          ) : (
+                            <></>
+                          )}
                         </div>
 
                         <div className={styles.optionsContainer}>

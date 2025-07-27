@@ -84,3 +84,25 @@
   border-radius: 10px;
   box-shadow: 10px 10px 15px rgb(173, 173, 173);
 }
+
+.profileContainer__flex {
+  display: flex;
+  gap: 0.7rem;
+}
+
+/* .card_profileContainer {
+  display: flex;
+} */
+
+.card_profileContainer > img {
+  width: 3.4rem;
+  height: auto;
+  height: 3.4rem;
+  object-fit: cover;
+}
+
+@media only screen and (max-width: 600px) {
+  .profileContainer__flex {
+    flex-direction: column;
+  }
+}
