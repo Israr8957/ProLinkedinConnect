@@ -7,7 +7,7 @@
 .createPostContainer {
   display: flex;
   height: 10svh;
-  width: 70%;
+  width: 100%;
   padding-inline: 0.8rem;
   gap: 1.3rem;
   align-items: center;

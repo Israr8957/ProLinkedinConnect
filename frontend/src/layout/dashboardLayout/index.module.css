@@ -44,7 +44,9 @@
 }
 
 .homeContainer_extraContainer {
+  padding-inline: 0.8rem;
   border-left: 1px solid rgb(220, 220, 220);
+  
 }
 
 .homeContainer_feedContainer {

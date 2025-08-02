@@ -9,7 +9,7 @@ import {
 } from "../../action/authAction";
 
 const initialState = {
-  user: null,
+  user: undefined, //null
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -68,9 +68,9 @@ const authSlice = createSlice({
       .addCase(registerUser.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.loggedIn = true;
+        //state.loggedIn = true;
         state.user = action.payload;
-        state.message = "Registration successful";
+        state.message = "Registration successful, Please login";
       })
       .addCase(registerUser.rejected, (state, action) => {
         state.isLoading = false;

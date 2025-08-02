@@ -73,7 +73,8 @@
 }
 
 .updateProfile {
-  padding-inline: 0.8rem;
+  padding-top: 1rem;
+  margin-top: 0.8rem;
   padding-block: 0.3rem;
   background: rgba(3, 93, 183, 0.905);
   outline: none;
@@ -107,7 +108,7 @@
   min-width: fit-content;
   padding-block: 1rem;
   border-radius: 10px;
-  box-shadow: 10px 10px 15px rgb(173, 173, 173);
+  box-shadow: 5px 5px 2px rgb(173, 173, 173);
 }
 
 .profileContainer_details input {

@@ -65,7 +65,7 @@ const register = async (req, res) => {
 
     const pro = await profile.save();
 
-    console.log("profile created", pro);
+    // console.log("profile created", pro);
 
     return res.json({ message: "User created" });
   } catch (error) {
@@ -178,7 +178,10 @@ const getUserAndProfile = async (req, res) => {
 
 const updateProfileData = async (req, res) => {
   try {
+
     const { token, ...newProfileDta } = req.body;
+    console.log("Incoming profile update:", newProfileDta);
+
 
     const userProfile = await User.findOne({ token: token });
     if (!userProfile) {

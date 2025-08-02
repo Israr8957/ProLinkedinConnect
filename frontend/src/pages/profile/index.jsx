@@ -28,9 +28,18 @@ export default function ProfilePage() {
     setInPinputData({ ...inputData, [name]: value });
   };
 
-  useEffect(async () => {
-    await dispatch(getAboutUser({ token: localStorage.getItem("token") }));
-    await dispatch(getAllPosts());
+  // useEffect(async () => {
+  //   await dispatch(getAboutUser({ token: localStorage.getItem("token") }));
+  //   await dispatch(getAllPosts());
+  // }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      await dispatch(getAboutUser({ token: localStorage.getItem("token") }));
+      await dispatch(getAllPosts());
+    };
+
+    fetchData();
   }, []);
 
   useEffect(() => {
@@ -62,18 +71,19 @@ export default function ProfilePage() {
   };
 
   const updateprofileData = async () => {
-    const request = await clientServer.post("/user_update", {
+    await clientServer.post("/user_update", {
       token: localStorage.getItem("token"),
       name: userProfile.userId.user,
     });
 
-    const response = await clientServer.post("/update_profile_data", {
+    await clientServer.post("/update_profile_data", {
       token: localStorage.getItem("token"),
       bio: userProfile.bio,
-      currentPost: userProfile.correntPost,
+      currentPost: userProfile.currentPost, // ✅ fixed typo
       postWork: userProfile.postWork,
       education: userProfile.education,
     });
+
     dispatch(getAboutUser({ token: localStorage.getItem("token") }));
   };
 
@@ -135,6 +145,7 @@ export default function ProfilePage() {
 
                   <textarea
                     value={userProfile.bio}
+                    placeholder="Write something about yourself..."
                     onChange={(e) => {
                       setUserProfile({ ...userProfile, bio: e.target.value });
                     }}

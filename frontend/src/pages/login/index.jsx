@@ -1,7 +1,6 @@
 import UserLayout from "@/layout/userLayout";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./style.module.css";
 import { loginUser, registerUser } from "@/config/redux/action/authAction";
@@ -15,19 +14,23 @@ export default function LoginComponent() {
   const router = useRouter();
   const dispatch = useDispatch();
 
-  const [username, setUsername] = useState();
-  const [name, setName] = useState();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   useEffect(() => {
     if (authState.loggedIn) {
+      setEmail("");
+      setPassword("");
       router.push("/dashboard");
     }
   }, [authState.loggedIn]);
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
+      setEmail("");
+      setPassword("");
       router.push("/dashboard");
     }
   }, []);
@@ -36,10 +39,8 @@ export default function LoginComponent() {
     dispatch(emptyMessage());
   }, [userLoginMethod]);
 
-  const handleRegister = () => {
-    console.log("registering");
-
-    dispatch(
+  const handleRegister = async () => {
+    const result = await dispatch(
       registerUser({
         username,
         password,
@@ -47,10 +48,21 @@ export default function LoginComponent() {
         name,
       })
     );
+
+    // If registration is successful, redirect to login and clear fields
+    if (result.meta.requestStatus === "fulfilled" && !result.error) {
+      setUsername("");
+      setName("");
+      setEmail("");
+      setPassword("");
+      setTimeout(() => {
+        setUserLoginMethod(true);
+      }, 3000);
+      router.push("/login");
+    }
   };
 
   const handleLogin = () => {
-    console.log("user login...");
     dispatch(
       loginUser({
         email,
@@ -77,18 +89,16 @@ export default function LoginComponent() {
               {!userLoginMethod && (
                 <div className={styles.inputRow}>
                   <input
-                    onChange={(e) => {
-                      setUsername(e.target.value);
-                    }}
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
                     type="text"
                     className={styles.inputField}
                     placeholder="Username"
                   />
 
                   <input
-                    onChange={(e) => {
-                      setName(e.target.value);
-                    }}
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                     type="text"
                     className={styles.inputField}
                     placeholder="Name"
@@ -97,18 +107,16 @@ export default function LoginComponent() {
               )}
 
               <input
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                }}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 type="email"
                 className={styles.inputField}
                 placeholder="Email"
               />
 
               <input
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                }}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 type="password"
                 className={styles.inputField}
                 placeholder="Password"

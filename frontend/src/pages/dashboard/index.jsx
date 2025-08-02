@@ -33,61 +33,36 @@ export default function Dashboard() {
   useEffect(() => {
     if (localStorage.getItem("token") === null) {
       router.push("/login");
-    }
-    setTockenIsThere();
-  });
-
-  useEffect(() => {
-    if (localStorage.getItem("token") === null) {
-      router.push("/login");
     } else {
       dispatch(setTockenIsThere());
     }
-  }, []);
-
-  // useEffect(() => {
-  //   if (authState.isTokenThere) {
-  //     dispatch(getAllPosts());
-  //     dispatch(getAboutUser({ token: localStorage.getItem("token") }));
-  //   }
-
-  //   if (!authState.all_profiles_fetched) {
-  //     dispatch(getAllUsers());
-  //   }
-  // }, [authState.isTokenThere]);
-
-  // useEffect(() => {
-  //   if (authState.isTockenThere) {
-  //     // Correct state name 'isTockenThere'
-  //     dispatch(getAllPosts());
-  //     dispatch(getAboutUser({ token: localStorage.getItem("token") }));
-  //   }
-
-  //   if (!authState.all_profiles_fetched) {
-  //     dispatch(getAllUsers());
-  //   }
-  // }, [authState.isTockenThere]); // Correct dependency: 'isTockenThere'
+  }, [dispatch, router]);
 
   useEffect(() => {
-    // Check token in localStorage
-    if (localStorage.getItem("token") === null) {
-      router.push("/login"); // Redirect to login if no token
-    } else {
-      // Dispatch action to update token status
-      dispatch(setTockenIsThere());
-    }
-
-    // Dispatch actions if token exists and profile is fetched
     if (authState.isTockenThere) {
       dispatch(getAllPosts());
       dispatch(getAboutUser({ token: localStorage.getItem("token") }));
+      if (!authState.all_profiles_fetched) {
+        dispatch(getAllUsers());
+      }
     }
+  }, [authState.isTockenThere, authState.all_profiles_fetched, dispatch]);  
 
-    // Fetch all users if profiles aren't fetched yet
-    if (!authState.all_profiles_fetched) {
-      dispatch(getAllUsers());
-    }
-  }, [authState.isTockenThere, dispatch, router]); // Dependency array ensures this runs on token state change
+  // useEffect(() => {
+  //   if (localStorage.getItem("token") === null) {
+  //     router.push("/login");
+  //   }
+  //   setTockenIsThere();
+  // }, []);
+
+  // useEffect(() => {
+  //   if (localStorage.getItem("token") === null) {
+  //     router.push("/login");
+  //   } else {
+  //     dispatch(setTockenIsThere());
+  //   }
+  // }, []);
+
 
   const handleUpload = async () => {
     await dispatch(createPost({ file: fileContent, body: postContent }));
