@@ -1,6 +1,9 @@
 .container{
-  padding: 1.2rem;
-  background: rgb(225, 223, 220);
+  padding: 1.4rem;
+  width: 100%;
+  background:white;
+  border-bottom: 1px solid rgb(227, 223, 223);
+  position: fixed
 }
 
 .navBar{

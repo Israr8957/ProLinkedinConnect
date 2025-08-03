@@ -1,7 +1,11 @@
 .container {
+  
 }
 
 .homeContainer {
+  padding-top: 100px;
+  /* background-color: rgb(250, 250, 249); */
+  background: #f3f2ef;
   display: flex;
 }
 
@@ -18,7 +22,6 @@
   flex-direction: column;
   gap: 1.2rem;
   align-items: start;
-  border-right: 1px solid rgb(230, 230, 230);
 }
 
 .sideBarOption {
@@ -44,10 +47,30 @@
 }
 
 .homeContainer_extraContainer {
-  padding-inline: 0.8rem;
-  border-left: 1px solid rgb(220, 220, 220);
-  
+  background-color: #ffffff;
+  border: 1px solid #dcdcdc;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.2s ease-in-out;
+  padding: 1rem;
+  width: 100%;
+  margin: 0.5rem 1rem 0 1rem; /* top, right, bottom, left */
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  height: fit-content;
 }
+
+/* Corrected hover effect */
+.homeContainer_extraContainer:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+
+
+/* .homeContainer_extraContainer {
+  padding-inline: 0.8rem;  
+} */
 
 .homeContainer_feedContainer {
   padding-inline: 0.8rem;

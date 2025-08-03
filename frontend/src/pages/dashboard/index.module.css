@@ -12,8 +12,10 @@
   gap: 1.3rem;
   align-items: center;
   position: relative;
-  background: rgb(255, 245, 246);
-  border-radius: 20px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  background-color: #ffffff;
+  border: 1px solid #dcdcdc;
 }
 
 .userProfile {
@@ -74,7 +76,7 @@
   border-bottom: 1px solid rgb(179, 179, 179);
 }  */
 
-.postContainer {
+/* .postContainer {
   width: 100%;
   border-radius: 10px 10px 0px 0px;
   border-bottom: 1px solid rgb(179, 179, 179);
@@ -128,6 +130,91 @@
   height: 100%;
   width: 10%;
   min-width: 1rem;
+} */
+
+.postContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  padding: 1rem 0;
+}
+
+.singleCard {
+  background-color: #ffffff;
+  border: 1px solid #dcdcdc;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.2s ease-in-out;
+  padding: 1rem;
+}
+
+.singleCard:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.singleCard_profileContainer {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid #eee;
+}
+
+.singleCard_profileContainer > img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.userProfile {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.singleCard_image {
+  width: 100%;
+  margin-top: 0.8rem;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.singleCard_image > img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 1px solid #eee;
+}
+
+.optionsContainer {
+  display: flex;
+  justify-content: space-around;
+  border-top: 1px solid #eee;
+  padding-top: 0.6rem;
+  margin-top: 0.8rem;
+}
+
+.singleOption_optionContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  color: #5e5e5e;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+}
+
+.singleOption_optionContainer:hover {
+  color: #0073b1; /* LinkedIn Blue */
+}
+
+.singleOption_optionContainer > svg {
+  height: 20px;
+  width: 20px;
 }
 
 .commentsContainer {
@@ -138,60 +225,85 @@
   left: 0;
   z-index: 2;
   background: rgba(0, 0, 0, 0.7);
-  overflow: hidden;
-  justify-content: center;
   display: flex;
+  justify-content: center;
   align-items: center;
+  overflow: hidden;
+  padding: 1rem;
 }
 
 .allCommentsContainer {
-  min-width: 50vw;
+  width: 100%;
+  max-width: 600px;
   height: 80vh;
   background: white;
   border-radius: 10px;
   position: relative;
   padding: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow-y: auto;
 }
 
 .postCommentContainer {
   display: flex;
-  width: 90%;
-  display: flex;
   position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  right: 1rem;
+  gap: 0.8rem;
   align-items: center;
-  justify-content: center;
-  gap: 1.2rem;
-  bottom: 1.2rem;
-  left: 1.2rem;
 }
 
 .postCommentContainer > input {
-  flex: 0.9;
-  padding-inline: 1.5rem;
-  padding-block: 1.2rem;
-  border-radius: 10px;
-  border: none;
-  background: rgb(228, 228, 228);
+  flex: 1;
+  padding: 1rem 1.2rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background: #f1f1f1;
   outline: none;
+  font-size: 1rem;
 }
 
 .postCommentContainer > input:focus {
-  border: 1px solid silver;
+  border-color: #999;
 }
 
 .postCommentContainer_commentBtn {
-  flex: 0.1rem;
-  width: fit-content;
-  padding: 1.2rem;
-  border-radius: 10px;
-  background: orange;
+  padding: 0.7rem 1rem;
+  border-radius: 8px;
+  background: #ff7a00;
   color: white;
-  text-align: center;
+  font-weight: 500;
   cursor: pointer;
+  white-space: nowrap;
+  font-size: 0.95rem;
 }
 
+/* Responsive tweaks */
 @media screen and (max-width: 600px) {
   .allCommentsContainer {
-    width: 50svh;
+    width: 100%;
+    height: 85vh;
+    padding: 1rem;
+  }
+
+  .postCommentContainer {
+    flex-direction: column;
+    align-items: stretch;
+    bottom: 0.8rem;
+    left: 0.8rem;
+    right: 0.8rem;
+    gap: 0.6rem;
+  }
+
+  .postCommentContainer > input {
+    width: 100%;
+  }
+
+  .postCommentContainer_commentBtn {
+    width: 100%;
+    text-align: center;
   }
 }
