@@ -23,7 +23,7 @@ export default function NavbarComponent() {
             router.push("/");
           }}
         >
-          Pro Connect
+          Connect
         </h1>
 
         <div className={styles.navBarOptionalContainer}>

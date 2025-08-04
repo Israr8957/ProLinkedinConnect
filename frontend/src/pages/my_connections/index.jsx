@@ -29,11 +29,11 @@ export default function MyConnectionsPage() {
         <div
           style={{ display: "flex", flexDirection: "column", gap: "1.6rem" }}
         >
-          <h3>My Connections</h3>
+          <div className={styles.myConnectionsContainer}>
+           
 
-          {authState.connectionRequest.length == 0 && (
-            <h1>No Connection Request</h1>
-          )}
+          {authState.connectionRequest.length == 0 ? 
+            <h3>No Connection Request</h3>: <h3>Connections Request</h3>}
 
           {authState.connectionRequest.length != 0 &&
             authState.connectionRequest
@@ -85,41 +85,44 @@ export default function MyConnectionsPage() {
                     </div>
                   </div>
                 );
-              })}
+              })} 
+          </div>
 
-          <p3>My Network</p3>
-          {authState.connectionRequest
-            .filter((connection) => connection.status_accepted !== null)
-            .map((user, index) => {
-              return (
-                <div
-                  onClick={() => {
-                    router.push(`/viewProfile/${user.userId.username}`);
-                  }}
-                  key={index}
-                  className={styles.userCard}
-                >
+          <div className={styles.myNetworkContainer}>
+            <p3>My Network</p3>
+            {authState.connectionRequest
+              .filter((connection) => connection.status_accepted !== null)
+              .map((user, index) => {
+                return (
                   <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "1.2rem",
+                    onClick={() => {
+                      router.push(`/viewProfile/${user.userId.username}`);
                     }}
+                    key={index}
+                    className={styles.userCard}
                   >
-                    <div className={styles.profilePicture}>
-                      {/* <img
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "1.2rem",
+                      }}
+                    >
+                      <div className={styles.profilePicture}>
+                        {/* <img
                         src={`${BASE_URL}/${user.userId.profilePicture}`}
                         alt="userPic"
                       /> */}
-                    </div>
-                    <div className={styles.userInfo}>
-                      <h3>{user.userId.name}</h3>
-                      <p>{user.userId.username}</p>
+                      </div>
+                      <div className={styles.userInfo}>
+                        <h3>{user.userId.name}</h3>
+                        <p>{user.userId.username}</p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
+          </div>
         </div>
       </DashboardLayout>
     </UserLayout>

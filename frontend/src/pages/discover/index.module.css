@@ -1,12 +1,30 @@
 .allUserProfile {
-  max-width: 80%;
+  max-width: 100%;
   gap: 1.9rem;
   display: flex;
   flex-direction: column;
-  padding: 1.3rem;
+  /* padding: 1.3rem; */
   align-items: center;
 }
 
+
+.allUserProfile{
+ background-color: #ffffff;
+  border: 1px solid #dcdcdc;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.2s ease-in-out;
+  padding: 1.2rem;
+  width: 100%;
+  margin:0.01 1rem 0 1rem; /* top, right, bottom, left */
+  display: flex;
+  gap: 0.2rem;
+  height: fit-content;
+}
+
+/* .:hover {
+  transform: scale(1.04);
+} */
 .userCard {
   display: flex;
   gap: 1.3rem;

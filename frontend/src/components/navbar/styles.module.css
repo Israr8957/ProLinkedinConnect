@@ -3,7 +3,8 @@
   width: 100%;
   background:white;
   border-bottom: 1px solid rgb(227, 223, 223);
-  position: fixed
+  position: fixed;
+  z-index: 1000;
 }
 
 .navBar{

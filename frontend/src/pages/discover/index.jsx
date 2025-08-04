@@ -21,8 +21,9 @@ export default function DiscoverPage() {
     <UserLayout>
       <DashboardLayout>
         <div>
-          <h3 style={{marginTop:"1.2rem"}}>People you may know based on your recent activity</h3>
+          
           <div className={styles.allUserProfile}>
+            <h3 style={{margin:"1rem",}}>People you may know based on your recent activity</h3>
             {authState.all_profiles_fetched &&
               authState.all_users.map((user) => {
                 return (
