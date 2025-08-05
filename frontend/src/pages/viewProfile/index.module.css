@@ -6,6 +6,26 @@
   gap: 1.2rem;
 }
 
+.container {
+  background-color: #ffffff;
+  border: 1px solid #dcdcdc;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.2s ease-in-out;
+  padding: 1rem;
+  width: 100%;
+  margin:0.01 1rem 0 1rem; /* top, right, bottom, left */
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  height: fit-content;
+}
+
+/* Corrected hover effect */
+.container:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
 .bsckDropContainer {
   width: 100%;
   height: 30vh;

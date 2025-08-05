@@ -46,7 +46,7 @@ export default function Dashboard() {
         dispatch(getAllUsers());
       }
     }
-  }, [authState.isTockenThere, authState.all_profiles_fetched, dispatch]);  
+  }, [authState.isTockenThere, authState.all_profiles_fetched, dispatch]);
 
   // useEffect(() => {
   //   if (localStorage.getItem("token") === null) {
@@ -62,7 +62,6 @@ export default function Dashboard() {
   //     dispatch(setTockenIsThere());
   //   }
   // }, []);
-
 
   const handleUpload = async () => {
     await dispatch(createPost({ file: fileContent, body: postContent }));
@@ -102,17 +101,11 @@ export default function Dashboard() {
                 <div className={styles.fab}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="currentColor"
-                    className="size-6"
+                    viewBox="0 0 640 640"
+                    className="w-6 h-6 text-orange-600"
+                    fill="currentColor"
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M12 4.5v15m7.5-7.5h-15"
-                    />
+                    <path d="M128 96C92.7 96 64 124.7 64 160V480c0 35.3 28.7 64 64 64h212c-13.7-19-24-40.7-30-64H152c-8.9 0-17.2-5-21.3-12.9s-.5-17.5 4.6-24.8l56-80c4.5-6.4 11.8-10.2 19.7-10.2s15.2 3.8 19.7 10.2l26.4 37.8 61.4-100.5c4.4-7.1 12.1-11.5 20.5-11.5s16.7 4.4 21.1 11.5l.2.4c35-36.9 84.5-59.9 139.3-59.9 5.4 0 10.7.2 16 .7V160c0-35.3-28.7-64-64-64H128zM192 176c26.5 0 48 21.5 48 48s-21.5 48-48 48-48-21.5-48-48 21.5-48 48-48zM496 576c79.5 0 144-64.5 144-144S575.5 288 496 288 352 352.5 352 432s64.5 144 144 144zm16-208v48h48c8.8 0 16 7.2 16 16s-7.2 16-16 16h-48v48c0 8.8-7.2 16-16 16s-16-7.2-16-16v-48h-48c-8.8 0-16-7.2-16-16s7.2-16 16-16h48v-48c0-8.8 7.2-16 16-16s16 7.2 16 16z" />
                   </svg>
                 </div>
               </label>

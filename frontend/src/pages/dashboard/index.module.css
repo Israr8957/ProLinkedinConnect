@@ -35,7 +35,7 @@
 }
 .fab {
   background: rgb(32, 32, 191);
-  border-radius: 100%;
+  border-radius: 10%;
   justify-content: center;
   display: flex;
   cursor: pointer;
