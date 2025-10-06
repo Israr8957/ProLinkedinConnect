@@ -1,5 +1,5 @@
 .container{
-  padding: 1.4rem;
+  padding: 1rem;
   width: 100%;
   background:white;
   border-bottom: 1px solid rgb(227, 223, 223);
@@ -15,6 +15,7 @@
 
 .navBarOptionalContainer{
   display: flex;
+  align-items: center;
 }
 
 .buttonJoin{

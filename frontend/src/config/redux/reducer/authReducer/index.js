@@ -55,6 +55,7 @@ const authSlice = createSlice({
         state.loggedIn = true;
         state.user = action.payload;
         state.message = { message: "Login successful" };
+        state.profileFetched = true;
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.isLoading = false;

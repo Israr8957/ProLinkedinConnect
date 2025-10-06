@@ -47,7 +47,7 @@ export default function ProfilePage() {
       setUserProfile(authState.user);
 
       let post = postReducer.posts.filter((post) => {
-        return post.userId?.username === authState.user.userId.username;
+        return post.userId?.username === authState.user.userId?.username;
       });
       setUserPosts(post); //there is some issue
     }

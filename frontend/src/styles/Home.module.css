@@ -5,6 +5,7 @@
 
 .mainContainer {
   display: flex;
+  padding-top: 2.5rem;
   align-items: center;
   gap: 4rem;
   padding-inline: 2rem;
